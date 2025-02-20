@@ -1,0 +1,20 @@
+Lab 6 Write Up: Submitted By Md Foyzer Rahman Mondal, SID: N01728463
+
+*Selected an existing AWS account with root user email address ‘mfrmondal@gmail.com’ and updated the credit card info with a prepaid credit card
+*Created a non-root user ‘foyzer’ with administrative privilege - Screenshot attached ReadMe.md file
+*Ceated access key and secret key for ‘foyzer’
+*Installed AWS CLI in my personal Laptop
+*Configured AWS CLI with access key and secret key
+*ested the configuration with the command ‘aws sts get-caller-identity’ - Screenshot attached ReadMe.md file   
+*Installed terraform in my personal Laptop and set it in the environment variable
+*Created a local repo by cloning the remote repo of ‘cloudfoxable’ using the following command
+    - git clone https://github.com/BishopFox/cloudfoxable
+*Changed the directory to aws
+*Copied the content of terraform.tfvars.example to terraform.tfvars using the following command 
+ - cp terraform.tfvars.example terraform.tfvars
+*Ran the terraform initialization at command prompt : terraform init - Screenshot attached ReadMe.md file
+*Edit the terraform.tfvars file for setting up the with the aws-local-profile=”foyzer” - Screenshot attached ReadMe.md file
+*Ran the ‘terraform plan’ command
+*Ran the ‘terraform apply’ command to execute the terraform code. The output below contains the flag in serial number 3 under Next Step: - Screenshot attached ReadMe.md file
+    - FLAG{congrats_you_are_now_a_terraform_expert_happy_hunting}
+
