@@ -1,23 +1,21 @@
 Lab 8 Write Up: Submitted by Md Foyzer Rahman Mondal, SID: N01728463
 
-1.	Check the profile using the command aws --profile cloudfoxable sts get-caller-identity
+1. Check the profile using the command aws --profile cloudfoxable sts get-caller-identity
             
-    2. Check the managed policies attached to the user using the command aws iam list-attached-user-policies --user-name ctf-starting-user --profile cloudfoxable
+2. Check the managed policies attached to the user using the command aws iam list-attached-user-policies --user-name ctf-starting-user --profile cloudfoxable
        
-3.	Check the AWS Security Audit policy using the command aws iam get-policy --policy-arn arn:aws:iam::aws:policy/SecurityAudit --profile cloudfoxable
+3. Check the AWS Security Audit policy using the command aws iam get-policy --policy-arn arn:aws:iam::aws:policy/SecurityAudit --profile cloudfoxable
             
-4.	Find the exact policy granted using the command aws iam get-policy-version --policy-arn arn:aws:iam::aws:policy/SecurityAudit --version-id v49 --profile cloudfoxable
+4. Find the exact policy granted using the command aws iam get-policy-version --policy-arn arn:aws:iam::aws:policy/SecurityAudit --version-id v49 --profile cloudfoxable
            
-5.	Get the secret policy using the command aws iam get-policy --policy-arn arn:aws:iam::982081074901:policy/its-a-secret-policy --profile cloudfoxable
+5. Get the secret policy using the command aws iam get-policy --policy-arn arn:aws:iam::982081074901:policy/its-a-secret-policy --profile cloudfoxable
 
-6.	From the description of the above we can see that “policy that only allows access to the its-a-secret flag”. Using this command aws iam get-policy-version --policy-arn arn:aws:iam::982081074901:policy/its-a-secret-policy --version-id v1 --profile cloudfoxable
-We can get the ssm:GetParameter that allows us to store configuration data and secrets.
+6. From the description of the above we can see that “policy that only allows access to the its-a-secret flag”. Using this command aws iam get-policy-version --policy-arn arn:aws:iam::982081074901:policy/its-a-secret-policy --version-id v1 --profile cloudfoxable.We can get the ssm:GetParameter that allows us to store configuration data and secrets.
 
-7.	 Retrieve information using the command aws ssm get-parameter --name /cloudfoxable/flag/its-a-secret  --profile cloudfoxable
+7. Retrieve information using the command aws ssm get-parameter --name /cloudfoxable/flag/its-a-secret  --profile cloudfoxable
 It shows the value of the SecureString in encrypted format
 
-
-8.	Decrypt the value of the SecureString using the command aws ssm get-parameter --name /cloudfoxable/flag/its-a-secret  --with-decryption --profile cloudfoxable . The value of the SecureString is the flag of this challenge.
+8. Decrypt the value of the SecureString using the command aws ssm get-parameter --name /cloudfoxable/flag/its-a-secret  --with-decryption --profile cloudfoxable . The value of the SecureString is the flag of this challenge.
 
 FLAG{ItsASecret::IsASecretASecretIfTooManyPeopleHaveAccessToIt?}
 
